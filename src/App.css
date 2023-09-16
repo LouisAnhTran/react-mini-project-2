@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.app-title{
+  color: blue;
+  font-size: 50px;
+  margin-top: 2rem;
+}

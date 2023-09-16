@@ -1,23 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import GoalList from './Components/GoalList/GoalList';
+import GoalAdd from './Components/GoalAdd/GoalAdd.jsx';
+import { useState } from 'react';
 
 function App() {
+    const [goalList,setGoalList]=useState([
+        {
+            id: "001", content: "finish all react concepts"
+        },
+        {
+            id: "002", content: "finish all react exercises"
+        },
+        {
+            id: "003", content: "finish all react hooks and components"
+        }
+
+    ]);
+
+    const updateList=(newGoal)=>{
+      setGoalList(preGoalList=>preGoalList.concat(newGoal));
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 class="app-title">Welcome to Goals application</h1>
+      <GoalAdd onGoalAdd={updateList}></GoalAdd>
+      <GoalList goalList={goalList}></GoalList>
     </div>
   );
 }
